@@ -1,0 +1,46 @@
+<html>
+    <head>
+    </head>
+    {% load static %}
+    <style>
+        body{
+         background-image: url('{% static "images/p9.jpg" %}');
+        }
+     </style>
+    <body>
+        <center>
+            <br><br><br><br>
+            <h1>Product Details....</h1>
+
+            <table border="2px">
+                <thead>
+                    <tr>
+                        
+                        <th>PRODUCT NAME</th>
+                        <th>PRICE</th>
+                        <th>QUANTITY</th>
+                        <th>IMAGE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in prdts %}
+                    <tr>
+                       <td class="pt-4">{{ p.product_name}}</td>
+                       <td class="pt-4">{{ p.price}}</td>
+                       <td class="pt-4">{{ p.quantity}}</td>
+                       <td>
+                        {{ p.image }}<br>
+                        <img src="{{ p.image.url }}" class="w-25">
+                       </td>
+                       <td>
+                        <a rol="button" class="btn btn-outline-dark btn-sm" href="{% url 'editpage' p.id %}">EDIT</a>
+                        <a rol="button" class="btn btn-outline-dark btn-sm" href="{% url 'delete' p.id %}">DELETE</a>
+                       </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </center>
+    </body>
+</html>

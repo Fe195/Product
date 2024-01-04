@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+    <style>
+        body{
+         background-image: url('{% static "images/p5.jpg" %}');
+        }
+     </style>
+<body>
+    <div class="container mt-5">
+       <div class="alert alert-info text-center"><br><br><br>
+       <center><h1>*UPDATE PRODUCT DETAILS*</h1></center> <br><br><br><br>
+       </div> 
+    
+    <center>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+        
+        
+            <form  method="post" action="{%  url 'edit_product' prdts.id  %}" enctype="multipart/form-data" >
+                {% csrf_token %}
+              <h2>Product Name:</h2>
+              <input type="text" name="pname" class="form-control mt-3" value="{{ prdts.product_name }}"> 
+              <h2>Price:</h2>
+              <input type="text" name="price" class="form-control mt-3" value="{{ prdts.price }}"> 
+              <h2>Quantity</h2>
+              <input type="text" name="qty" class="form-control mt-3" value="{{ prdts.quantity }}"> 
+              <h2>Product Image:</h2>
+              <img src="{{ prdts.image.url }}" class="w-25"><br>{{prdts.image}}
+              <input type="file" name="file" class="form-control mt-3" accept="image/*">
+              <button type="submit" class="btn btn-info mt-3 w-100"><h4>UPDATE</h4></button>
+            </form>
+            </div>
+            <div class="col-sm-3"></div>     
+        
+    </center>
+    
+</body>
+</html>
